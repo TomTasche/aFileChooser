@@ -16,10 +16,6 @@
 
 package com.ipaulpro.afilechooser;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +24,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * List adapter for Files.
  * 
- * @version 2012-10-28
+ * @version 2013-06-25
  * 
  * @author paulburke (ipaulpro)
  * 
@@ -42,7 +42,7 @@ public class FileListAdapter extends BaseAdapter {
 	private final static int ICON_FILE = R.drawable.ic_file;
 
 	private List<File> mFiles = new ArrayList<File>();
-	private LayoutInflater mInflater;
+	private final LayoutInflater mInflater;
 
 	public FileListAdapter(Context context) {
 		mInflater = LayoutInflater.from(context);
@@ -57,27 +57,33 @@ public class FileListAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public int getCount() {
+	@Override
+    public int getCount() {
 		return mFiles.size();
 	}
 
 	public void add(File file) {
 		mFiles.add(file);
+		notifyDataSetChanged();
 	}
 
 	public void clear() {
 		mFiles.clear();
+		notifyDataSetChanged();
 	}
 
-	public Object getItem(int position) {
+	@Override
+    public Object getItem(int position) {
 		return mFiles.get(position);
 	}
 
-	public long getItemId(int position) {
+	@Override
+    public long getItemId(int position) {
 		return position;
 	}
 
-	public View getView(int position, View convertView, ViewGroup parent) {
+	@Override
+    public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 		ViewHolder holder = null;
 
