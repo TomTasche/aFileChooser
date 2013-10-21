@@ -49,7 +49,7 @@ public class FileChooserActivity extends FragmentActivity implements
 
     public static final String PATH = "path";
 	public static final String EXTERNAL_BASE_PATH = Environment
-			.getExternalStorageDirectory().getAbsolutePath();
+			.getExternalStorageDirectory().getParent();
 
 	private static final boolean HAS_ACTIONBAR = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB;
 
